@@ -5,8 +5,6 @@ The focus is on setting up the development environment and validating tool insta
 
 ---
 
-## 📌 Week-0 Tasks  
-
 ### 🎉 Welcome Call / Inauguration Highlights
 
 The RISC-V Tapeout Program inauguration marked a historic step for India’s largest online academic tapeout initiative, with **3500+ participants** collaborating to design and build silicon.
@@ -19,6 +17,8 @@ The energy and vision shared during the session set the stage for an exciting 20
 
 ---
 
+## 📌 Week-0 Tasks  
+
 ### ✅ Task-1: GitHub Setup & Documentation  
 - Created this GitHub repository.  
 - Documented the summary of the kickoff session and initial setup steps.  
@@ -26,7 +26,6 @@ The energy and vision shared during the session set the stage for an exciting 20
 #### RISC-V SoC Design Flow – From C Code to Silicon
 
 Summary of the step-by-step flow of designing a processor and SoC, moving from **specifications → RTL → GDSII → Silicon**.
-
 
 ---
 
@@ -194,3 +193,4 @@ sudo apt install gtkwave
 
 ✍️ *Author: Rupam Bora*
 📅 *Program Start: 18-09-2025*
+
