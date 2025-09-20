@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-<img src="asset/VSD_IITGN_SYNP_SCL-1024x576.png" alt="VSD IITGN SCL Logo" width="550" style="display:inline-block; margin:0 10px;"/>
+<img src="asset/VSD_IITGN_SYNP_SCL-1024x576.png" alt="VSD IITGN SCL Logo" width="800" style="display:inline-block; margin:0 10px;"/>
 </p>
 <p align="center">
   <a href="https://riscv.org/">
