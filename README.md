@@ -41,6 +41,16 @@ I will update this repo **week-by-week** with tasks, learnings, tool setups, and
 | Week | Focus Area | Repo Link | Status |
 |------|------------|-----------|--------|
 | 0 | Environment Setup & Tool Installation | [🔗 Week-0 Repo](./week00/README.md) | ✅ Completed |
+| 1 | RTL Design, Simulation & Logic Synthesis | [🔗 Week-1 Repo](./week01/README.md) | 🔄 Ongoing |
+| 2 | To Be Notified | [🔗 Week-2 Repo](./week02/README.md) | 🔜 Upcoming |
+| 3 | To Be Notified | [🔗 Week-3 Repo](./week03/README.md) | 🔜 Upcoming |
+| 4 | To Be Notified | [🔗 Week-4 Repo](./week04/README.md) | 🔜 Upcoming |
+| 5 | To Be Notified | [🔗 Week-5 Repo](./week05/README.md) | 🔜 Upcoming |
+| 6 | To Be Notified | [🔗 Week-6 Repo](./week06/README.md) | 🔜 Upcoming |
+| 7 | To Be Notified | [🔗 Week-7 Repo](./week07/README.md) | 🔜 Upcoming |
+| 8 | To Be Notified | [🔗 Week-8 Repo](./week08/README.md) | 🔜 Upcoming |
+| 9 | To Be Notified | [🔗 Week-9 Repo](./week09/README.md) | 🔜 Upcoming |
+| 10 | To Be Notified | [🔗 Week-10 Repo](./week10/README.md) | 🔜 Upcoming |
 
 ---
 
