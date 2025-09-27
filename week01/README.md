@@ -13,25 +13,30 @@ This week covers the fundamentals of RTL design, synthesis, and gate-level simul
   - [1.2 Labs using iverilog and GTKWave](#12-labs-using-iverilog-and-gtkwave)
   - [1.3 Introduction to Yosys and Logic Synthesis](#13-introduction-to-yosys-and-logic-synthesis)
   - [1.4 Labs using Yosys and SKY130 PDKs](#14-labs-using-yosys-and-sky130-pdks)
+  - [Day 1 — Conclusion](#day-1--conclusion)
 - [Day 2 — Timing Libraries and Coding Styles](#day-2--timing-libraries-and-coding-styles)
   - [2.1 Introduction to Timing .lib Files](#21-introduction-to-timing-lib-files)
   - [2.2 Hierarchical vs Flat Synthesis](#22-hierarchical-vs-flat-synthesis)
   - [2.3 Flop Coding Styles and Optimization](#23-flop-coding-styles-and-optimization)
+  - [Day 2 — Conclusion](#day-2--conclusion)
 - [Day 3 — Combinational and Sequential Optimizations](#day-3--combinational-and-sequential-optimizations)
   - [3.1 Introduction to Optimizations](#31-introduction-to-optimizations)
   - [3.2 Combinational Logic Optimizations](#32-combinational-logic-optimizations)
   - [3.3 Sequential Logic Optimizations](#33-sequential-logic-optimizations)
   - [3.4 Optimizations for Unused Outputs](#34-optimizations-for-unused-outputs)
+  - [Day 3 — Conclusion](#day-3--conclusion)
 - [Day 4 — GLS and Simulation Mismatches](#day-4--gls-and-simulation-mismatches)
   - [4.1 GLS, Blocking vs Non-Blocking, and Mismatches](#41-gls-blocking-vs-non-blocking-and-mismatches)
   - [4.2 Labs on GLS and Mismatch](#42-labs-on-gls-and-mismatch)
   - [4.3 Labs on Blocking Statement Mismatch](#43-labs-on-blocking-statement-mismatch)
+  - [Day 4 — Conclusion](#day-4--conclusion)
 - [Day 5 — Synthesis Optimizations](#day-5--synthesis-optimizations)
   - [5.1 If-Case Constructs](#51-if-case-constructs)
   - [5.2 Labs on Incomplete If-Case](#52-labs-on-incomplete-if-case)
   - [5.3 Labs on Incomplete Overlapping Case](#53-labs-on-incomplete-overlapping-case)
   - [5.4 For-Loop and For-Generate](#54-for-loop-and-for-generate)
   - [5.5 Labs on For-Loop and For-Generate](#55-labs-on-for-loop-and-for-generate)
+  - [Day 5 — Conclusion](#day-5--conclusion)
 - [Conclusion](#conclusion)
 
 ---
@@ -186,6 +191,11 @@ endmodule
 * iverilog generates VCD.
 * GTKWave visualizes VCD as waveforms.
 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 1.2 Labs using iverilog and GTKWave
 
@@ -318,6 +328,12 @@ endmodule
 * GTKWave is used for waveform-based functional verification.
 * Testbench applies stimulus, but does not check output automatically.
 * Verification is done by **observing signals** in GTKWave.
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 1.3 Introduction to Yosys and Logic Synthesis
 
@@ -490,6 +506,12 @@ dff    u2 (.D(net1), .CLK(clk), .RST(rst), .Q(y));
   * **Setup** (performance).
   * **Hold** (reliability).
   * **Power/area**.
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 1.4 Labs using Yosys and SKY130 PDKs
 
@@ -698,6 +720,11 @@ read_liberty  →  read_verilog  →  synth -top
 
 ---
 
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
+
+
 ## Day 2 — Timing Libraries and Coding Styles
 
 ### 2.1 Introduction to Timing .lib Files
@@ -854,6 +881,12 @@ endmodule
 3. Tools (Yosys, STA engines) use `.lib` for optimization and analysis.
 4. Cell flavors balance **area vs speed vs power**.
 5. Always run **multi-corner STA** before tapeout.
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 2.2 Hierarchical vs Flat Synthesis
 
@@ -1017,6 +1050,12 @@ write_verilog -noattr submodule1_netlist.v
 
   * Area/cell stats (hier vs flat)
   * Note on De Morgan optimization
+ 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 2.3 Flop Coding Styles and Optimization
 
@@ -1269,6 +1308,10 @@ show
 
 ---
 
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
+
 ## Day 3 — Combinational and Sequential Optimizations
 
 ### 3.1 Introduction to Optimizations
@@ -1439,6 +1482,12 @@ These are used in **industrial flows**, but not covered in lab.
 * **Async set/reset cases** often prevent optimization.
 * **Advanced techniques** (state optimization, retiming, cloning) improve performance but need physical context.
 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
+
 ### 3.2 Combinational Logic Optimizations
 
 #### 1. Objective
@@ -1594,6 +1643,12 @@ abc -liberty ../mylib/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 * Flattening is mandatory for multi-module optimization.
 * Optimized netlists use fewer cells and reduce area.
 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
+
 ### 3.3 Sequential Logic Optimizations
 
 #### 1. Objective
@@ -1716,6 +1771,11 @@ end
 * Active-high resets/sets → synthesis inserts inverter (SKY130 cells use active-low).
 * Always confirm with **simulation + yosys statistics**.
 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 3.4 Optimizations for Unused Outputs
 
@@ -1818,6 +1878,21 @@ show
 * Unused register bits and their feeding logic are removed.
 * This reduces **area and power**.
 * Always check synthesis reports and netlists to confirm optimizations.
+
+---
+
+### Day 3 — Conclusion
+
+- **Combinational optimizations**: constant propagation, Boolean simplification, and dead logic removal reduce gate count; flattening enables cross-module cleanup.  
+- **Sequential optimizations**: flops with constant outputs are removed; clock-dependent flops are preserved; async set/reset may block optimization.  
+- **Unused outputs**: only logic driving primary outputs is kept; unused flops and their feeding logic are pruned.  
+- **Technology mapping**: Yosys uses `dfflibmap` + `abc` to map optimized logic and flops to SKY130 standard cells.  
+- **Advanced methods** (theory): state optimization, retiming, and logic cloning improve performance and timing closure in large designs.  
+- **Key outcome**: synthesis aggressively minimizes area/power while preserving functional intent, confirmed by GLS.  
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
 
 ---
 
@@ -1957,6 +2032,12 @@ end
 * **Combinational logic** → blocking is ok, but watch ordering.
 * Always use `always @(*)` for combinational sensitivity lists.
 * Run **GLS** to ensure netlist matches RTL intent.
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 4.2 Labs on GLS and Mismatch
 
@@ -2101,6 +2182,12 @@ endmodule
 * **Mismatch** occurs when RTL sim ≠ synthesized hardware.
 * Always use `always @(*)` for combinational logic.
 * GLS is mandatory to validate post-synthesis behavior.
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 4.3 Labs on Blocking Statement Mismatch
 
@@ -2266,6 +2353,29 @@ Not recommended for pure combinational paths.
 
 ---
 
+### Day 4 — Conclusion
+
+- **GLS is mandatory**: validates synthesized netlist against RTL using the same testbench.  
+- **Extra step in GLS**: include standard-cell Verilog models (`sky130_fd_sc_hd.v`, `primitives.v`).  
+- **SSM (Simulation-Synthesis Mismatch)** occurs due to:  
+  - Missing sensitivity lists in combinational blocks.  
+  - Misuse of blocking (`=`) in sequential logic.  
+  - Ordering issues in combinational always blocks.  
+- **RTL simulator vs synthesis**:  
+  - RTL sim depends on coding style (sensitivity list, assignment type).  
+  - Synthesis infers hardware equations, ignores sensitivity list bugs.  
+- **Key rules**:  
+  - Use `always @(*)` for all combinational logic.  
+  - Use non-blocking (`<=`) for sequential logic.  
+  - Avoid blocking assignment ordering pitfalls in combinational blocks.  
+- **Trust GLS over RTL sim**: GLS reflects real hardware mapped to standard cells.  
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
+
 ## Day 5 — Synthesis Optimizations
 
 ### 5.1 If-Case Constructs
@@ -2411,6 +2521,12 @@ endcase
 3. **Always add `else` or `default`**
 4. **Assign all outputs in all branches**
 5. **Avoid overlapping cases**
+
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 5.2 Labs on Incomplete If-Case
 
@@ -2594,6 +2710,11 @@ end
 
 → Synthesizes to **pure mux logic**, no latch.
 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 5.3 Labs on Incomplete Overlapping Case
 
@@ -2815,6 +2936,11 @@ gtkwave bad_case.vcd
 * Use GLS to verify actual hardware behavior
 * Remember: **incomplete = latches, overlapping = mismatches**
 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
 
 ### 5.4 For-Loop and For-Generate
 
@@ -3041,6 +3167,12 @@ endgenerate
 
 These constructs are fundamental for **scalable RTL design**, **parameterized modules**, and **clean structural code**.
 
+---
+
+[🔼 Back to Table of Contents](#table-of-contents)
+
+---
+
 ### 5.5 Labs on For-Loop and For-Generate
 
 #### 1. Multiplexer with `for` Loop
@@ -3188,6 +3320,36 @@ Check how loop constructs reduce code size.
 
 ---
 
+### Day 5 — Conclusion
+
+- **If–Else vs Case**
+  - `if–else` → priority logic (MUX chain).  
+  - `case` → parallel logic (multiplexer).  
+  - Missing `else` or `default` → latch inferred.  
+  - Overlapping `case` items → simulation–synthesis mismatch.  
+
+- **Latch Risks**
+  - Latches are level-sensitive → timing issues, glitches.  
+  - Avoid by always assigning all outputs in all branches.  
+
+- **Best Practices**
+  - Use `if–else` only when priority is needed.  
+  - Use `case` for selection logic.  
+  - Always add a final `else` or `default`.  
+  - Ensure no overlapping case items.  
+
+- **Loop Constructs**
+  - `for` (inside `always`) → logic evaluation, scales MUX/DMUX.  
+  - `for-generate` (outside `always`) → hardware replication, scalable structures (e.g., adders).  
+  - Always use static bounds and `genvar` for generate loops.  
+
+- **Verification**
+  - Incomplete constructs cause inferred latches (confirmed in simulation and synthesis).  
+  - RTL sim ≠ synthesis netlist if code is incomplete or overlapping.  
+  - Always cross-check with **GLS** (Gate Level Simulation).  
+
+---
+
 ## Conclusion
 
 - **Simulators are event-driven:** Outputs change only when inputs toggle. VCD captures transitions, not static states.  
@@ -3199,6 +3361,14 @@ Check how loop constructs reduce code size.
   - Incomplete or overlapping case statements  
 - **GLS is mandatory:** RTL sim alone is insufficient. GLS checks timing, resets, and real cell behavior.  
 - **Correct coding prevents bugs:** Always cover all branches, initialize outputs, use non-blocking for flops.  
-- **Loops scale efficiently:** Case-based 256:1 mux = hundreds of lines; loop-based = a few lines. For-generate replicates hardware cleanly.  
+- **Loops scale efficiently:** Case-based 256:1 mux = hundreds of lines; loop-based = a few lines. For-generate replicates hardware cleanly.
+
+ ---
+
+[🔼 Back to Table of Contents](#table-of-contents)
 
 ---
+
+
+---
+
