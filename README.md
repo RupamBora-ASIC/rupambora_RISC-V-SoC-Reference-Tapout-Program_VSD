@@ -38,19 +38,20 @@ I will update this repo **week-by-week** with tasks, learnings, tool setups, and
 
 ## 📅 Weekly Progress Tracker  
 
-| Week | Focus Area | Repo Link | Status |
-|------|------------|-----------|--------|
-| 0 | Environment Setup & Tool Installation | [🔗 Week-0 Repo](./week00/README.md) | ✅ Completed |
-| 1 | RTL Design, Simulation & Logic Synthesis | [🔗 Week-1 Repo](./week01/README.md) | 🔄 Submitted |
-| 2 | To Be Notified | [🔗 Week-2 Repo](./week02/README.md) | 🔜 Upcoming |
-| 3 | To Be Notified | [🔗 Week-3 Repo](./week03/README.md) | 🔜 Upcoming |
-| 4 | To Be Notified | [🔗 Week-4 Repo](./week04/README.md) | 🔜 Upcoming |
-| 5 | To Be Notified | [🔗 Week-5 Repo](./week05/README.md) | 🔜 Upcoming |
-| 6 | To Be Notified | [🔗 Week-6 Repo](./week06/README.md) | 🔜 Upcoming |
-| 7 | To Be Notified | [🔗 Week-7 Repo](./week07/README.md) | 🔜 Upcoming |
-| 8 | To Be Notified | [🔗 Week-8 Repo](./week08/README.md) | 🔜 Upcoming |
-| 9 | To Be Notified | [🔗 Week-9 Repo](./week09/README.md) | 🔜 Upcoming |
-| 10 | To Be Notified | [🔗 Week-10 Repo](./week10/README.md) | 🔜 Upcoming |
+| Week | Focus Area                            | Hands-on Labs (tool-only)                                                                                                 | Deliverables / Checkpoints                                                                            | Status       |
+| ---- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ------------ |
+| 0    | Environment Setup & Tool Installation | Install tools, set up environment                                                                                         | Screenshots/logs of installed tools                                                                   | ✅ Completed  |
+| 1    | Environment + RTL sim basics          | Set up toolchain; run iverilog simulations; inspect signals in GTKWave; inject a small RTL bug and detect via sim         | iverilog run logs; 2 annotated GTKWave screenshots; 5–7 lines on the bug & fix                        | 🔄 Submitted |
+| 2    | Synthesis & GLS                       | Synthesize with Yosys; Gate-level simulation (GLS) with std-cell models; compare RTL vs GLS behavior                      | Pre/post-synth sim match screenshots; Yosys stat area/cell snippet; note on an observed optimization  | 🔜 Upcoming  |
+| 3    | RISC-V ISA & toolchain                | Build & run a small RISC-V program (riscv-gnu-toolchain); simulate CPU testbench with iverilog + GTKWave (fetch/decode)   | Waves showing PC, instruction, decode outputs; brief note on pipeline stage boundaries                | 🔜 Upcoming  |
+| 4    | Pipeline bugs, clock gating & CPU GLS | Reproduce a load-use hazard; apply clock-gating variant; re-synthesize (Yosys); CPU-level GLS with cell models            | Waveforms: buggy vs fixed; one slide on toggle reduction with clock gating; GLS pass log snippet      | 🔜 Upcoming  |
+| 5    | STA fundamentals                      | Write core timing constraints (SDC); run OpenSTA on post-synth netlist; identify worst setup/hold paths & constraint gaps | Setup/Hold report excerpts (WNS/TNS); 5–8 lines justifying clocks/IO delays/false or multicycle paths | 🔜 Upcoming  |
+| 6    | CMOS & SPICE with SKY130              | Draw basic gates in Xschem; simulate in ngspice; sweep VDD/Temp/Load; extract rise/fall delays                            | 3 plots (delay vs load; delay vs VDD; rise vs fall); one-pager explaining PVT effects on delay        | 🔜 Upcoming  |
+| 7    | OpenLane: floorplan → placement       | Run OpenLane through floorplan & placement; tune utilization/aspect; tap/decap insertion; check congestion metrics        | Floorplan/placement metrics snapshot; congestion heatmap/metrics; note on best util/aspect found      | 🔜 Upcoming  |
+| 8    | CTS, routing & post-route STA         | OpenLane: CTS → global/detail route; OpenSTA post-CTS & post-route; review hold fixes                                     | Post-route timing summary (WNS, TNS) at TT; final routed layout screenshot; note on hold-fix strategy | 🔜 Upcoming  |
+| 9    | Multi-corner timing + sign-off        | Multi-corner OpenSTA (slow/typ/fast); generate SDF and run SDF-annotated GLS; assemble sign-off artifacts                 | Table of WNS/TNS across corners; SDF-GLS pass log & wave snapshot; list of sign-off artifacts         | 🔜 Upcoming  |
+| 10   | Final polish & documentation          | Re-run best config to clean violations; summarize RTL→GDS flow, constraints, corner timing; short walkthrough video       | Final timing & DRC status summary; 4–6 page PDF report; 2–3 min demo video link                       | 🔜 Upcoming  |
+
 
 ---
 
