@@ -5,8 +5,8 @@
 This week covers the fundamentals of RTL design, synthesis, and gate-level simulation (GLS) using open-source tools like Icarus Verilog (iverilog), GTKWave, and Yosys with the Sky130 process design kit (PDK). The focus is on creating Verilog RTL designs, simulating them to verify functionality, and synthesizing them into gate-level netlists using standard cell libraries. Key topics include understanding timing libraries (.lib files), exploring hierarchical versus flat synthesis, and applying combinational and sequential optimizations to reduce area, power, and delay. The course also addresses common pitfalls like simulation-synthesis mismatches caused by improper coding practices, such as missing sensitivity lists or incorrect use of blocking and non-blocking assignments. Additionally, it introduces scalable coding techniques using for-loops and for-generate constructs for efficient hardware design. Practical labs reinforce these concepts by simulating designs, synthesizing them with Yosys, and verifying netlists through GLS, ensuring alignment between RTL and synthesized hardware behavior.
 
 ---
-
-## 📑 Table of Contents
+📑
+## Table of Contents
 - [Introduction](#introduction)
 - [Day 1 — Verilog RTL Design and Synthesis](#day-1--verilog-rtl-design-and-synthesis)
   - [1.1 Introduction to iverilog](#11-introduction-to-iverilog)
@@ -3371,4 +3371,5 @@ Check how loop constructs reduce code size.
 
 
 ---
+
 
