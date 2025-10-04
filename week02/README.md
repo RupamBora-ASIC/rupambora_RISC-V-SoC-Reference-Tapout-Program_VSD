@@ -1,4 +1,6 @@
-# 🧠 VSDBabySoC: Your First Step into Real Chip Design
+# Week 2 — VSDBabySoC:Step into Real Chip Design
+
+---
 
 This isn’t just another academic exercise. VSDBabySoC is a **hands-on playground** to learn how real chips are built—from CPU to analog output—using open-source tools and actual silicon-ready flows.
 
@@ -118,3 +120,4 @@ That’s the magic. 🔮
 
 > “Don’t just simulate—**fabricate**.”  
 > — India’s Semiconductor Mission 🇮🇳
+
