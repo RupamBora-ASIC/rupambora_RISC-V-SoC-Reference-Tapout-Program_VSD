@@ -1,4 +1,4 @@
-# Week 2 — VSDBabySoC:Step into Real Chip Design
+# Week 2 — 🧠 VSDBabySoC:Step into Real Chip Design
 
 ---
 
@@ -121,3 +121,165 @@ That’s the magic. 🔮
 > “Don’t just simulate—**fabricate**.”  
 > — India’s Semiconductor Mission 🇮🇳
 
+---
+
+# 🧪 VSDBabySoC: Hands-on Functional Modelling Lab
+
+This lab walks you through **functional simulation** of the **VSDBabySoC**—a minimal RISC-V SoC with PLL clock generation and 10-bit DAC analog output. You’ll use **Icarus Verilog (`iverilog`)** and **GTKWave** to verify system behavior **before synthesis**.
+
+---
+
+## 🛠️ Tools Required
+- **Icarus Verilog** (`iverilog`, `vvp`) → compiles and simulates Verilog
+- **GTKWave** → visualizes waveforms (`.vcd` files)
+- **Git** → to clone the project
+
+> ✅ Works on Linux/macOS. Install via:
+> ```bash
+> # Ubuntu/Debian
+> sudo apt install iverilog gtkwave git
+> # macOS (with Homebrew)
+> brew install icarus-verilog gtkwave git
+> ```
+
+---
+
+## 📂 Step 1: Clone the Project
+```bash
+git clone <repo>
+```
+
+Expected structure:
+```
+VSDBabySoC/
+├── src/
+│   ├── include/      # .vh header files
+│   └── module/       # rvmyth.v, pll.v, dac.v, vsdbabysoc.v, testbench.v
+└── output/           # simulation outputs (you’ll create this)
+```
+
+---
+
+## ⚙️ Step 2: Compile & Run Pre-Synthesis Simulation
+
+### Create output directory
+```bash
+mkdir -p output/pre_synth_sim
+```
+
+### Compile with `iverilog`
+```bash
+iverilog -o output/pre_synth_sim/sim.out \
+  -DPRE_SYNTH_SIM \
+  -I src/include \
+  -I src/module \
+  src/module/testbench.v \
+  src/module/vsdbabysoc.v \
+  src/module/rvmyth.v \
+  src/module/avsdpll.v \
+  src/module/avsddac.v
+```
+
+### Run simulation
+```bash
+cd output/pre_synth_sim
+../sim.out  # generates pre_synth_sim.vcd
+```
+
+---
+
+## 🔍 Step 3: Analyze Waveforms in GTKWave
+
+```bash
+gtkwave pre_synth_sim.vcd
+```
+
+In GTKWave:
+1. Click **`tb`** → expand hierarchy
+2. Drag signals to waveform pane:
+   - `reset`
+   - `CLK` (from PLL)
+   - `rvmyth.OUT` (10-bit digital data)
+   - `dac.OUT` (analog output)
+3. Use **Zoom Fit** (`F`) to see full simulation
+
+📌 *Image placeholder: `screenshots/babysoc_full_wave.png` — full waveform view*
+
+---
+
+## 📊 Key Signals to Observe
+
+### 1. **Reset Behavior**
+- At start, `reset = 1` → RISC-V core held in reset
+- When `reset = 0`, CPU begins execution
+- DAC output stays at 0 during reset
+
+📌 *Image placeholder: `screenshots/reset_phase.png`*  
+> **What it shows**: CPU inactive during reset; DAC output = 0.
+
+---
+
+### 2. **PLL Clock Generation**
+- `CLK` starts oscillating after PLL locks
+- Stable, clean clock drives RISC-V core
+- No glitches or jitter in simulation
+
+📌 *Image placeholder: `screenshots/pll_clock.png`*  
+> **What it shows**: PLL generates stable clock for CPU.
+
+---
+
+### 3. **Data Flow: CPU → DAC**
+- `rvmyth.OUT` updates every few clock cycles (e.g., counting pattern)
+- `dac.OUT` mirrors digital value as analog voltage
+- Example: `rvmyth.OUT = 10'h200` → `dac.OUT` ≈ mid-scale voltage
+
+📌 *Image placeholder: `screenshots/cpu_to_dac.png`*  
+> **What it shows**: Digital data from CPU converted to analog by DAC.
+
+---
+
+### 4. **Analog Output (`dac.OUT`)**
+- Smooth step changes (no spikes)
+- Output scales with `VREFH` (reference voltage)
+- Matches expected DAC transfer function
+
+📌 *Image placeholder: `screenshots/dac_output.png`*  
+> **What it shows**: DAC produces correct analog levels for digital inputs.
+
+---
+
+## 📁 Deliverables Checklist
+
+| Item | Location |
+|------|--------|
+| ✅ Simulation log (`sim.out` compile output) | `output/pre_synth_sim/compile.log` |
+| ✅ VCD waveform file | `output/pre_synth_sim/pre_synth_sim.vcd` |
+| 📸 Screenshot: Reset phase | `screenshots/reset_phase.png` |
+| 📸 Screenshot: PLL clock | `screenshots/pll_clock.png` |
+| 📸 Screenshot: CPU → DAC data | `screenshots/cpu_to_dac.png` |
+| 📸 Screenshot: DAC analog output | `screenshots/dac_output.png` |
+| 📝 Short explanation per screenshot | In this README (see above) |
+
+> 💡 **Pro tip**: Use `gtkwave`’s **zoom** and **cursor** to measure clock period or DAC settling time.
+
+---
+
+## 🚨 Troubleshooting
+
+| Issue | Fix |
+|------|-----|
+| ❌ `Module redefined` | Don’t include modules in testbench with `` `include ``—list them explicitly in `iverilog` command |
+| ❌ `File not found` | Double-check `-I` paths; use absolute paths if needed |
+| ❌ No `dac.OUT` in GTKWave | Ensure `avsddac.v` is compiled; check testbench `$dumpvars` scope |
+
+---
+
+## 🎯 Why This Matters
+- **Functional simulation catches bugs early**—before synthesis, P&R, or tapeout.
+- You’re verifying **system-level integration**: CPU + clock + analog output.
+- This is how real SoC teams validate behavior **before spending weeks on physical design**.
+
+> 🔚 **Next step**: After pre-synthesis sim, you’ll synthesize with Yosys and run **post-synthesis GLS** to confirm no mismatches.
+
+---
